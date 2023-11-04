@@ -1,0 +1,58 @@
+  function generateRandomMaze(width, height, complexity, density) {
+    // Create an empty grid for the maze
+    const maze = new Array(width);
+  
+    for (let x = 0; x < width; x++) {
+      maze[x] = new Array(height);
+    }
+  
+    // Initialize the maze with walls
+    for (let x = 0; x < width; x++) {
+      for (let y = 0; y < height; y++) {
+        maze[x][y] = 'wall';
+      }
+    }
+  
+    // Carve out the maze
+    for (let x = 2; x < width - 2; x += 2) {
+        for (let y = 2; y < height - 2; y += 2) {
+          maze[x][y] = 'sand';
+      
+          for (let i = 0; i < complexity; i++) {
+            const dx = (Math.random() * 3) | 0;
+            const dy = (Math.random() * 3) | 0;
+      
+            for (let j = 0; j < density; j++) {
+              if (x + dx >= 0 && x + dx < width && y + dy >= 0 && y + dy < height) {
+                maze[x + dx][y + dy] = 'sand';
+              }
+              x += dx;
+              y += dy;
+            }
+          }
+        }
+      }
+      
+  
+    // Add rocky, grass, and swamp terrain
+    for (let x = 0; x < width; x++) {
+      for (let y = 0; y < height; y++) {
+        if (maze[x][y] === 'wall') {
+          // Add rocky terrain
+          if (Math.random() < 0.1) {
+            maze[x][y] = 'rocky';
+          }
+        } else if (maze[x][y] === 'sand') {
+          // Add grass and swamp terrain
+          const random = Math.random();
+          if (random < 0.2) {
+            maze[x][y] = 'grass';
+          } else if (random < 0.3) {
+            maze[x][y] = 'swamp';
+          }
+        }
+      }
+    }
+  
+    return maze;
+  }
