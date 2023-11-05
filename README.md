@@ -1,7 +1,7 @@
 # labirinto
 Projeto de Labirinto para a disciplina de Fundamentos de Sistemas Inteligentes
 
-![Screenshot]([environment_example.png](https://raw.githubusercontent.com/tassid/labirinto/main/print1.png))
+[Screenshot](https://raw.githubusercontent.com/tassid/labirinto/main/print1.png)
 
 
 ## Tecnologias usadas:
